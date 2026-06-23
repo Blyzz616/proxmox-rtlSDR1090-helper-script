@@ -5,7 +5,7 @@ source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxV
 # License: MIT
 # Source: https://github.com/Blyzz616/proxmox-rtlSDR1090-helper-script
 
-APP="ADSB-Receiver"
+APP="ADSB"
 var_tags="${var_tags:-adsb;rtl-sdr}"
 var_cpu="${var_cpu:-2}"
 var_ram="${var_ram:-1024}"
