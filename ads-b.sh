@@ -3,7 +3,7 @@ source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxV
 # Copyright (c) 2021-2026 community-scripts ORG
 # Author: Jim
 # License: MIT
-# Source: https://github.com/wiedehopf/readsb + https://github.com/wiedehopf/tar1090
+# Source: https://github.com/Blyzz616/proxmox-rtlSDR1090-helper-script
 
 APP="ADSB-Receiver"
 var_tags="${var_tags:-adsb;rtl-sdr}"
@@ -13,6 +13,8 @@ var_disk="${var_disk:-8}"
 var_os="${var_os:-debian}"
 var_version="${var_version:-12}"
 var_unprivileged="${var_unprivileged:-0}"
+var_install="ads-b_install"
+INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/Blyzz616/proxmox-rtlSDR1090-helper-script/main/install/ads-b_install.sh"
 
 header_info "$APP"
 variables
@@ -56,6 +58,6 @@ echo -e "${YW}IMPORTANT:${CL} You still need to pass the RTL-SDR USB dongle thro
          to this container. Run the following on the Proxmox HOST shell
          (not inside the container):
 
-         ${BL}bash <(curl -fsSL https://raw.githubusercontent.com/YOURUSER/YOURREPO/main/usb-passthrough.sh)${CL}
+         ${BL}bash <(curl -fsSL https://raw.githubusercontent.com/Blyzz616/proxmox-rtlSDR1090-helper-script/main/usb_passthrough.sh)${CL}
 
          and follow the prompts, supplying CTID ${BL}${CTID}${CL} when asked.\n"
