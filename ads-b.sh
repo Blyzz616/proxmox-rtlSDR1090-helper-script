@@ -5,12 +5,16 @@
 # Source: https://github.com/Blyzz616/proxmox-rtlSDR1090-helper-script
 
 # --- Pre-flight: ensure host has required dependencies before doing anything else ---
-for pkg in jq curl; do
-  if ! command -v "$pkg" &>/dev/null; then
-    echo "Installing missing host dependency: $pkg"
-    apt-get update -qq && apt-get install -y -qq "$pkg"
+if ! command -v jq &>/dev/null; then
+  echo "jq not found on host — installing now..."
+  apt-get update -qq >/dev/null 2>&1
+  apt-get install -y jq >/dev/null 2>&1
+  if command -v jq &>/dev/null; then
+    echo "jq installed successfully."
+  else
+    echo "WARNING: jq install failed — continuing anyway, build.func will fall back gracefully."
   fi
-done
+fi
 # --- End pre-flight ---
 
 source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/build.func)
