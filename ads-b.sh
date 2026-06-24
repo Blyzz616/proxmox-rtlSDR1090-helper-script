@@ -1,9 +1,19 @@
 #!/usr/bin/env bash
-source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/build.func)
 # Copyright (c) 2021-2026 community-scripts ORG
 # Author: Jim
 # License: MIT
 # Source: https://github.com/Blyzz616/proxmox-rtlSDR1090-helper-script
+
+# --- Pre-flight: ensure host has required dependencies before doing anything else ---
+for pkg in jq curl; do
+  if ! command -v "$pkg" &>/dev/null; then
+    echo "Installing missing host dependency: $pkg"
+    apt-get update -qq && apt-get install -y -qq "$pkg"
+  fi
+done
+# --- End pre-flight ---
+
+source <(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/build.func)
 
 APP="ADSB"
 var_tags="${var_tags:-adsb;rtl-sdr}"
