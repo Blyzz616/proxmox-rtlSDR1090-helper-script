@@ -32,11 +32,8 @@ blacklist rtl2832
 blacklist rtl2830
 EOC
 
-echo ">> Installing readsb (ADS-B decoder)"
-bash -c "$(curl -fsSL https://github.com/wiedehopf/readsb/raw/dev/install.sh)"
-
-echo ">> Installing tar1090 (Map Web UI)"
-bash -c "$(curl -fsSL https://github.com/wiedehopf/tar1090/raw/master/install.sh)"
+echo ">> Installing readsb (ADS-B decoder) + tar1090 (this script handles both)"
+bash -c "$(curl -fsSL https://github.com/wiedehopf/adsb-scripts/raw/master/readsb-install.sh)"
 
 echo ">> Installing graphs1090 (Stats/Graphs)"
 bash -c "$(curl -fsSL https://github.com/wiedehopf/graphs1090/raw/master/install.sh)"
