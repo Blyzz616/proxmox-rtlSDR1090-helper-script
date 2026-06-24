@@ -27,8 +27,6 @@ var_disk="${var_disk:-8}"
 var_os="${var_os:-debian}"
 var_version="${var_version:-12}"
 var_unprivileged="${var_unprivileged:-0}"
-var_install="ads-b_install"
-INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/Blyzz616/proxmox-rtlSDR1090-helper-script/main/install/ads-b_install.sh"
 
 header_info "$APP"
 
@@ -67,6 +65,10 @@ function update_script() {
 start
 build_container
 description
+
+msg_info "Installing ADS-B stack inside container (this runs our own install script, not upstream)"
+pct exec "$CTID" -- bash -c "$(curl -fsSL https://raw.githubusercontent.com/Blyzz616/proxmox-rtlSDR1090-helper-script/main/install/ads-b_install.sh)"
+msg_ok "ADS-B stack installed"
 
 msg_ok "Completed Successfully!\n"
 echo -e "${APP} should be reachable by going to the following URL.
