@@ -31,6 +31,9 @@ var_install="ads-b_install"
 INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/Blyzz616/proxmox-rtlSDR1090-helper-script/main/install/ads-b_install.sh"
 
 header_info "$APP"
+
+echo -e "\nNOTE: This container needs to be PRIVILEGED so the RTL-SDR USB dongle\ncan be passed through to it later via usb_passthrough.sh.\nUnprivileged containers cannot access host USB devices without extra\nmanual cgroup/AppArmor configuration.\n"
+
 variables
 color
 catch_errors
